@@ -36,8 +36,21 @@ if(!order){
   }
 }
 
+async function removeOrder(id){
+
+  const data = JSON.parse( await readFile(global.fileName));
+  
+  data.pedidos = data.pedidos.filter(
+      order => order.id !== parseInt(id));
+  
+  await writeFile(global.fileName, JSON.stringify(data, null, 2));
+  return `Pedido ${id} deletado com sucesso`
+
+} 
+
 export default {
   insertOrder,
   getOrders,
-  getOrderById
+  getOrderById,
+  removeOrder
 }

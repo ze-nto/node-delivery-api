@@ -59,7 +59,19 @@ async function orderStatusUpdate(req, res){
 
 }
 
-async function deleteOrder(req, res){
+async function deleteOrder(req, res, next){
+
+  if(!req.params.id){
+    throw new Error('An order id is mandatory!')
+  }
+
+  try{
+    let data = await OrderService.deleteOrder(req.params.id)
+    res.json(data);
+
+  } catch( err ){
+      next(err);
+  }
 
 }
 

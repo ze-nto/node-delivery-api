@@ -15,10 +15,15 @@ async function createOrder(order){
  async function getOrder(id){
    return await OrderRepository.getOrderById(id);
  } 
+
+async function deleteOrder(id){
+  return await OrderRepository.removeOrder(id)
+}
  
  
  export default {
    createOrder,
    getOrders,
-   getOrder
+   getOrder,
+   deleteOrder
  }
