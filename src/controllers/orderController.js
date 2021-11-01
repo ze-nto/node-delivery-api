@@ -1,47 +1,67 @@
-// const order ={
-//   id,
-//   cliente,
-//   produto,
-//   valor,
-//   entregue,
-//   timestamp
-// }
 
-  function createOrder(req, res){
+import OrderService from '../services/order.service.js'
 
-  }
 
-  function getOrders(req, res){
+async function createOrder(req, res, next){
+  try{
+    let order = req.body;
 
-  }
+    if(!order.client || !order.product || !order.price){
+      throw new Error('Nome do cliente, produto e preço são obrigatórios')
+    }
 
-  function getProductsReport(req, res){
+    order = await OrderService.createOrder(order);
+    res.send(order)
+
+  } catch(err){
 
   }
+}
 
-  function getOrdersByClient(req, res){
+async function getOrders(req, res, next){
+  try{
+    let data = await OrderService.getOrders()
+    res.send(data);
 
+  } catch( err ){
+      next(err);
+  }
+}
+
+async function getProductsReport(req, res){
+
+}
+
+async function getOrdersByClient(req, res){
+
+}
+
+async function getOrderById(req, res, next){
+  try{
+    let data = await OrderService.getOrder(req.params.id)
+    res.send(data);
+
+  } catch( err ){
+      next(err);
   }
 
-  function getOrderById(req, res){
+}
 
-  }
+async function getOrdersByProduct(req, res){
 
-  function getOrdersByProduct(req, res){
+}
 
-  }
+async function updateOrder(req, res){
 
-  function updateOrder(req, res){
+}
 
-  }
+async function orderStatusUpdate(req, res){
 
-  function orderStatusUpdate(req, res){
+}
 
-  }
+async function deleteOrder(req, res){
 
-  function deleteOrder(req, res){
-
-  }
+}
 
 export default {
   createOrder,

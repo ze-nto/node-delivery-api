@@ -5,11 +5,12 @@ const { readFile } = fs;
 
 const port =  process.env.PORT || 5000;
 
+global.fileName = 'orders.json'
 const server = http.createServer(app);
 
 server.listen(port, async () => {
     try{
-        await readFile('pedidos.json');
+        await readFile(fileName);
         console.log(`Server running at http://localhost:${port}`)
     } catch (err){
         console.log('pedidos.json not found')
