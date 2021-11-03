@@ -1,29 +1,35 @@
 import { Router } from 'express';
-import orderController from '../controllers/orderController.js';
+import orderController from '../controllers/order.controller.js';
 
 const router = Router();
 
+
 //Creates a order
-router.post('/', orderController.createOrder)
+router.post('/orders', orderController.createOrder)
 
 // Return all orders
-router.get('/', orderController.getOrders)
+router.get('/orders', orderController.getOrders)
 
 // Return an specified order
-router.get('/:id', orderController.getOrderById)
+router.get('/orders/:id', orderController.getOrderById)
 
 // Update an specied order
-router.put('/:id', orderController.updateOrder)
+router.put('/orders/:id', orderController.updateOrder)
 
 // Update the delivery status of an specied order
-router.patch('/:id/status', orderController.orderStatusUpdate)
+router.patch('/orders/:id', orderController.updateOrderStatus)
 
 // Delete an specified order
-router.delete('/:id', orderController.deleteOrder)
+router.delete('/orders/:id', orderController.deleteOrder)
 
-// router.get('/:client', orderController.getOrdersByClient)
-// router.get('/:product', orderController.getOrdersByProduct)
-// router.get('/', orderController.getProductsReport)
+// Returns the total value of a specified client orders
+router.get('/orders/:id/total', orderController.getOrdersByClient)
+
+// Returns total of specied product ordered
+router.get('/product', orderController.getOrdersByProduct)
+
+//Returns the best sellers products
+router.get('/product/bestSellers', orderController.getProductsReport)
 
 //error Handling
 router.use((err, req, res, next) => {

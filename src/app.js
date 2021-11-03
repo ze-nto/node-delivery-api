@@ -5,12 +5,14 @@ const app = express()
 
 
 app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 
 app.get('/', (req, res) => {
   throw new Error('Página não encontrada')
 });
 
-app.use('/v1/orders', ordersRouter);
+app.use('/v1', ordersRouter);
+
 
 //Error handling
 app.use((error, req, res, next) => {

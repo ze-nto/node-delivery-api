@@ -1,21 +1,19 @@
 {
-  "nextId": 502,
+  "nextId": 513,
   "pedidos": [
     {
       "id": 1,
-      "cliente": "Lavínia Dâmaso",
-      "produto": "Pizza Muçarela",
-      "valor": 26,
-      "entregue": true,
-      "timestamp": "2021-05-02T19:48:09.765Z"
+      "cliente": "José Pereira",
+      "produto": "Pizza",
+      "valor": 24,
+      "entregue": false
     },
     {
       "id": 2,
-      "cliente": "Tália Simas",
-      "produto": "Pizza Napolitana",
-      "valor": 28,
-      "entregue": true,
-      "timestamp": "2021-05-02T19:48:09.765Z"
+      "cliente": "José Pereira",
+      "produto": "Pizza Calabreza",
+      "valor": 24,
+      "entregue": false
     },
     {
       "id": 3,
